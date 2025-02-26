@@ -1,0 +1,147 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>افزودن آیتم جدید</title>
+    <!-- Add Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Add Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+    <!-- Add Datepicker CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .form-card {
+            border: none;
+            border-radius: 12px;
+            background: #fff;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            padding: 2rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .form-label {
+            font-weight: 600;
+            color: #495057;
+            margin-bottom: 0.5rem;
+        }
+        .form-control {
+            border-radius: 8px;
+            padding: 0.75rem 1rem;
+            font-size: 1rem;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+        .form-control:focus {
+            border-color: #80bdff;
+            box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+        }
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        .btn-primary {
+            background-color: #007bff;
+            border: none;
+            border-radius: 8px;
+            padding: 0.75rem 1.5rem;
+            font-size: 1rem;
+            font-weight: 600;
+            transition: background-color 0.3s ease;
+        }
+        .btn-primary:hover {
+            background-color: #0056b3;
+        }
+        .btn-secondary {
+            background-color: #6c757d;
+            border: none;
+            border-radius: 8px;
+            padding: 0.75rem 1.5rem;
+            font-size: 1rem;
+            font-weight: 600;
+            transition: background-color 0.3s ease;
+        }
+        .btn-secondary:hover {
+            background-color: #5a6268;
+        }
+        .text-center {
+            text-align: center;
+        }
+        .mt-4 {
+            margin-top: 1.5rem;
+        }
+        .mb-4 {
+            margin-bottom: 1.5rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center mb-4">افزودن آیتم جدید</h1>
+
+        <!-- Form Card -->
+        <div class="form-card">
+            <form method="post">
+                {% csrf_token %}
+                <!-- نام آیتم -->
+                <div class="form-group">
+                    <label for="id_name" class="form-label">نام آیتم</label>
+                    <input type="text" class="form-control" id="id_name" name="name" required>
+                </div>
+                <!-- قیمت -->
+                <div class="form-group">
+                    <label for="id_price" class="form-label">قیمت (تومان)</label>
+                    <input type="number" class="form-control" id="id_price" name="price" required>
+                </div>
+                <!-- تعداد -->
+                <div class="form-group">
+                    <label for="id_quantity" class="form-label">تعداد</label>
+                    <input type="number" class="form-control" id="id_quantity" name="quantity" required>
+                </div>
+                <!-- لینک خرید -->
+                <div class="form-group">
+                    <label for="id_purchase_link" class="form-label">لینک خرید</label>
+                    <input type="url" class="form-control" id="id_purchase_link" name="purchase_link">
+                </div>
+                <!-- تاریخ خرید -->
+                <div class="form-group">
+                    <label for="id_purchase_date" class="form-label">تاریخ خرید</label>
+                    <input type="text" class="form-control" id="id_purchase_date" name="purchase_date" required>
+                </div>
+                <!-- وضعیت خرید -->
+                <div class="form-group">
+                    <label for="id_status" class="form-label">وضعیت خرید</label>
+                    <select class="form-control" id="id_status" name="status" required>
+                        <option value="1">خریداری شده</option>
+                        <option value="2">محمد</option>
+                        <option value="3">مهدی</option>
+                        <option value="4">امیرحسین</option>
+                        <option value="5">امیرمحمد</option>
+                    </select>
+                </div>
+                <!-- دکمه‌ها -->
+                <div class="text-center mt-4">
+                    <button type="submit" class="btn btn-primary me-2"><i class="bi bi-save"></i> ذخیره</button>
+                    <a href="{% url 'budget_view' %}" class="btn btn-secondary"><i class="bi bi-arrow-left"></i> بازگشت</a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Add Bootstrap JS and dependencies -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+    <!-- Add Datepicker JS -->
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script>
+        // Initialize Flatpickr for date input
+        flatpickr("#id_purchase_date", {
+            dateFormat: "Y-m-d",
+            locale: "fa" // Optional: For Persian calendar
+        });
+    </script>
+</body>
+</html>
