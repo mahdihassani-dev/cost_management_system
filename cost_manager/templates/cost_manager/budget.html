@@ -18,7 +18,11 @@
         <div class="card mb-4 text-end">
             <div class="card-body">
                 <h5 class="card-title">وضعیت بودجه</h5>
+                {% if budget.total_budget %}
                 <p class="card-text">بودجه کل: {{ budget.total_budget }} تومان</p>
+                {% else %}
+                <p class="card-text">بودجه کل: 0 تومان</p>
+                {% endif %}
                 <p class="card-text">مجموع هزینه‌ها: {{ total_spent }} تومان</p>
                 <p class="card-text">بودجه باقی‌مانده: {{ remaining_budget }} تومان</p>
             </div>
