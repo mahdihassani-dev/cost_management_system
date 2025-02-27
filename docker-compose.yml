@@ -11,6 +11,8 @@ services:
       - POSTGRES_DB=${POSTGRES_NAME}
     ports:
       - "${POSTGRES_LOCAL_PORT}:${POSTGRES_PORT}"
+    volumes:
+      - webapp_db_data:/var/lib/postgresql/data
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER} -d ${POSTGRES_NAME}"]
       interval: 5s
@@ -32,3 +34,6 @@ services:
       web_app_db:
         condition: service_healthy
     restart: on-failure
+
+volumes:
+  webapp_db_data:
