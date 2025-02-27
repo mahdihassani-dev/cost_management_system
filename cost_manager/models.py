@@ -2,7 +2,7 @@ from django.db import models
 
 
 class Budget(models.Model):
-    total_budget = models.DecimalField(max_digits=10, decimal_places=2)
+    total_budget = models.DecimalField(max_digits=10, decimal_places=0)
 
     def __str__(self):
         return f"Total Budget: {self.total_budget}"
@@ -18,7 +18,7 @@ PURCHASE_STATUS = (
 
 class PurchaseItem(models.Model):
     name = models.CharField(max_length=200)
-    price = models.DecimalField(max_digits=10, decimal_places=2)
+    price = models.IntegerField()
     quantity = models.IntegerField()
     purchase_link = models.URLField(null=True, blank=True)
     purchase_date = models.DateField()
