@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 from django.db import models
 
 
@@ -17,6 +16,7 @@ PURCHASE_STATUS = (
     (5, "امیرمحمد"),
 )
 
+
 class PurchaseItem(models.Model):
     name = models.CharField(max_length=200)
     price = models.DecimalField(max_digits=10, decimal_places=2)
@@ -27,33 +27,3 @@ class PurchaseItem(models.Model):
 
     def __str__(self):
         return self.name
-=======
-from django.db import models
-
-
-class Budget(models.Model):
-    total_budget = models.DecimalField(max_digits=10, decimal_places=0)
-
-    def __str__(self):
-        return f"Total Budget: {self.total_budget}"
-
-
-PURCHASE_STATUS = (
-    (1, "خریداری شده"),
-    (2, "محمد"),
-    (3, "مهدی"),
-    (4, "امیرحسین"),
-    (5, "امیرمحمد"),
-)
-
-class PurchaseItem(models.Model):
-    name = models.CharField(max_length=200)
-    price = models.IntegerField()
-    quantity = models.IntegerField()
-    purchase_link = models.URLField(null=True, blank=True)
-    purchase_date = models.DateField()
-    status = models.IntegerField(choices=PURCHASE_STATUS, default=1)
-
-    def __str__(self):
-        return self.name
->>>>>>> bdf2298d7ddb593dc091cde27d7b1c3a713e420a
