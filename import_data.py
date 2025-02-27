@@ -9,6 +9,10 @@ django.setup()
 
 from cost_manager.models import PurchaseItem  # مدل مربوطه را ایمپورت کنید
 
+status = {
+    "خریداری شده":1,
+    "محمد":2
+}
 def import_from_excel(file_path):
     # خواندن فایل اکسل
     df = pd.read_excel(file_path)
@@ -19,7 +23,7 @@ def import_from_excel(file_path):
             name=row['وسیله'],
             quantity=row['تعداد'],
             price=row['هزینه واحد(تومان)'],
-            status=row['وضعیت خرید'],
+            status=status[row['وضعیت خرید']],
             purchase_date=datetime.today(),  # تاریخ امروز
             purchase_link=None  # لینک خرید نال
         )
